@@ -1,0 +1,19 @@
+const app = new Vue ({
+	el: '#app',
+	data: {
+		fullName:'Fernando Alonso',
+		positionTitle: 'Senior Driver',
+		linkedInLink: 'https://chargebacks911.com',
+		mobilePhone: '123 456 7890',
+		skypeAccount: 'f.alonso',
+		profilePhoto: 'https://chargebacks911.com/wp-content/uploads/2017/02/cb911icon-2.png'
+	}
+});
+
+ function copySigCode() {
+        var range = window.getSelection().getRangeAt(0);
+        range.selectNode(document.getElementById("sigCode"));
+        window.getSelection().addRange(range);
+        document.execCommand("copy")
+    }
+				

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gerando Assinatura Email</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <nav class="nav">
+	<div class="container">
+		<div class="row">
+			<div class="span twelve">
+				<div class="nav__body">
+					<a class="nav__logo" href="#">
+						<img class="nav__logo-icon" src="http://www.ecbsa.com.br/img/site/logo-2.png" />
+						<span class="nav__logo-label">Gerando Assinatura Email</span>
+					</a><!--logo-->
+					<a href="https://support.office.com/pt-br/article/Criar-e-adicionar-uma-assinatura-a-mensagens-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2" target="_blank">Ajuda</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div id="app">
+	<div class="container">
+		<div class="row">
+			<div class="span twelve">
+				<div class="template-card">
+					<h1>Criar Assitura do e-mail</h1>
+					<p class="intro">
+						Selecione uma empresa e preencha os campos para gerar a assinatura do seu email.
+					</p>
+					<form class="template-form">
+						<div class="row">
+							<div class="span six">
+								<fieldset>
+									<label>Empresa</label>
+									<select v-model="empresa">
+										<option v-for="(item, index) in empresas" v-bind:value="item">{{item.name}}</option>
+									</select>
+								</fieldset>
+							</div><!--six-->					
+						</div>
+						<div class="row" v-if="empresa!==''">
+							<div class="span six">
+								<fieldset>
+									<label>Nome</label>
+									<input type="text" v-model="fullName" placeholder="Digite seu nome"/>
+								</fieldset>
+							</div><!--six-->
+							<div class="span six">
+								<fieldset>
+									<label>Cargo</label>
+									<input type="text" v-model="positionTitle" placeholder="Informe seu Cargo"/>
+								</fieldset>
+							</div><!--six-->
+						</div><!--row-->
+						<div class="row" v-if="empresa!==''">
+							<div class="span six">
+									<fieldset>
+										<label>LinkedIn URL <small>Copie o link do seu perfil linkedin</small></label>
+										<input type="text" v-model="linkedInLink" placeholder="Informe seu linkedin"/>
+								</fieldset>
+							</div><!--six-->
+							<div class="span six">
+								<fieldset>
+									<label>Celular</label>
+									<input type="tel" v-model="mobilePhone" placeholder="Informe seu celular"/>
+								</fieldset>
+							</div><!--six-->
+						</div><!--row-->
+						<div class="row" v-if="empresa!==''">
+							<div class="span six">
+								<fieldset>
+									<label>Skype</label>
+									<input type="text" v-model="skypeAccount" placeholder="Informe seu Skype" />
+								</fieldset>
+							</div><!--six-->
+							<div class="span six">
+								<fieldset>
+									<label>Ramal</label>
+									<input type="text" v-model="ramal" placeholder="Informe seu Ramal" />
+								</fieldset>
+							</div><!--six-->
+						</div><!--row-->
+					</form>
+				</div>
+			</div><!--six-->
+		</div>
+
+		<div class="row" v-if="empresa!==''">
+			<div class="span six">
+				<h4>Código HTML</h4>
+				<div class="template-card">
+					<div class="well">
+						<code id="sigCode" onclick="copySigCode()">&lt;table style=&quot;font-size: small; color: #222222; font-family: arial, sans-serif; border-bottom: 1px solid #e0e0e0; padding-bottom: 10px; max-width: 395px;&quot; width=&quot;420px&quot;&gt;
+							&lt;tbody&gt;
+								&lt;tr&gt;
+									&lt;td style=&quot;margin: 0px; padding-left: 10px; line-height: 20px;&quot; valign=&quot;top&quot; width=&quot;70px&quot;&gt;
+											&lt;a style=&quot;color: #1155cc;&quot; href=&quot;{{ linkedInLink }}&quot; target=&quot;_blank&quot;&gt;
+												&lt;img style=&quot;padding-right: 0px;&quot; src=&quot;{{ profilePhoto }}&quot; alt=&quot;&quot; width=&quot;70px&quot; height=&quot;60px&quot; align=&quot;left&quot; /&gt;
+											&lt;/a&gt;
+									&lt;/td&gt;
+											&lt;td style=&quot;margin: 0px; padding-left: 10px; line-height: 20px;&quot; valign=&quot;top&quot; width=&quot;350px&quot;&gt;
+										&lt;strong&gt;&lt;span style=&quot;font-size: 16px; line-height: 20px;&quot;&gt;{{ fullName }}&lt;/span&gt;&lt;/strong&gt;
+										&lt;br /&gt;&lt;span style=&quot;text-transform: uppercase; font-size: 11px; letter-spacing: 0.2px; color: #999999;&quot;&gt;{{ positionTitle }}&lt;/span&gt;
+										&lt;br /&gt;&lt;a style=&quot;color: #1155cc; font-size: 11px; text-decoration: none;&quot; href=&quot;http://chargebacks911.com/events/&quot; target=&quot;_blank&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;Meet Us at an Upcoming Event&lt;/span&gt;&lt;/a&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+						&lt;table style=&quot;color: #222222; font-family: arial, sans-serif; font-size: small; max-width: 450px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;&quot; width=&quot;100%&quot;&gt;
+							&lt;tbody&gt;
+								&lt;tr&gt;
+									&lt;td style=&quot;margin: 0px; line-height: 16px;&quot; valign=&quot;top&quot; width=&quot;43%&quot;&gt;&lt;span style=&quot;font-size: 11px; line-height: 16px;&quot;&gt;&lt;span style=&quot;color: #999999;&quot;&gt;US:&lt;/span&gt;&lt;a style=&quot;color: #1155cc; text-decoration: none;&quot; href=&quot;tel:+4402037505550&quot; target=&quot;_blank&quot;&gt;&lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;(877) 634 9808&lt;/span&gt;&lt;/a&gt;
+										&lt;br /&gt;&lt;span style=&quot;color: #999999;&quot;&gt;Fax:&lt;/span&gt;&lt;a style=&quot;color: #1155cc;&quot;&gt;&lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;1 727 683 9491&lt;/span&gt;&lt;/a&gt;
+										&lt;br /&gt;&lt;span style=&quot;color: #999999;&quot;&gt;Mobile:&lt;/span&gt;&lt;a style=&quot;color: #1155cc;&quot;&gt;&lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;{{ mobilePhone }}&lt;/span&gt;&lt;/a&gt;
+										&lt;br /&gt;&lt;a style=&quot;color: #1155cc; font-family: sans-serif; text-decoration: none;&quot; href=&quot;https://chargebacks911.com/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;&lt;span style=&quot;color: #000000;&quot;&gt;Chargebacks911.com&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;
+										&lt;/span&gt;
+									&lt;/td&gt;
+									&lt;td style=&quot;margin: 0px; line-height: 16px;&quot; valign=&quot;top&quot; width=&quot;50%&quot;&gt;&lt;span style=&quot;font-size: 11px; line-height: 16px;&quot;&gt;&lt;span style=&quot;color: #999999;&quot;&gt;UK:&lt;/span&gt;&lt;a style=&quot;color: #1155cc; text-decoration: none;&quot; href=&quot;tel:+4402037505197&quot; target=&quot;_blank&quot;&gt;&lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp+44 (0) 2037 505550&lt;/span&gt;&lt;/a&gt;
+										&lt;br /&gt;&lt;span style=&quot;color: #999999;&quot;&gt;International:&lt;/span&gt;&lt;a style=&quot;color: #1155cc; text-decoration: none;&quot; href=&quot;tel:+17274611089&quot; target=&quot;_blank&quot;&gt;&lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;+1 727 461 1089&lt;/span&gt;&lt;/a&gt;
+										&lt;br /&gt;&lt;span style=&quot;font-size: 11px; line-height: 16px;&quot;&gt;&lt;span style=&quot;color: #999999;&quot;&gt;Skype:&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;{{ skypeAccount }}&lt;/span&gt;&lt;br /&gt;&lt;a style=&quot;color: #1155cc; text-decoration: none; line-height: 16px;&quot; href=&quot;http://thechargebackcompany.com/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;&lt;span style=&quot;color: #000000;&quot;&gt;TheChargebackCompany.com&lt;/span&gt;&lt;/strong&gt;&lt;/a&gt;
+										&lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+						&lt;table style=&quot;color: #222222; font-family: arial, sans-serif; font-size: small; max-width: 400px;&quot; width=&quot;100%&quot;&gt;
+							&lt;tbody&gt;
+								&lt;tr&gt;
+									&lt;td style=&quot;margin: 0px; padding-left: 6px; max-width:300px;&quot; width=&quot;250px&quot; max-width=&quot;250px&quot; &gt;
+										&lt;a style=&quot;color: #1155cc;&quot; href=&quot;https://chargebacks911.com/chargebacks911-named-best-chargeback-management-program/&quot; target=&quot;_blank&quot;&gt;
+										&lt;img style=&quot;text-decoration: none; width: 250px !important;&quot; src=&quot;https://chargebacks911.com/wp-content/uploads/2017/02/awards-1.png&quot; alt=&quot;Award Winning Solutions&quot; max-width=&quot;250px;&quot; border=&quot;0&quot; /&gt;
+										&lt;/a&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td style=&quot;margin: 0px;&quot;&gt;&lt;span style=&quot;display: block; padding-left: 35px; font-size: 11px;&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;&quot;The Chargeback Company&amp;trade;&quot;&lt;/span&gt;&lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td style=&quot;margin: 0px; padding-left: 10px;&quot;&gt;&lt;span style=&quot;font-size: 9px; line-height: 16px;&quot;&gt;&lt;span style=&quot;color: #999999;&quot;&gt;IMPORTANT NOTICE: The contents of this communication including any attachment(s) are confidential and may be privileged. Any unauthorized review, distribution, use of or reliance upon this information is prohibited. If you are not the intended recipient (or are not receiving this communication on behalf of the intended recipient), please notify the sender immediately and delete or destroy this communication without reading it and without making, forwarding or retaining any copy or record of it or its contents.&lt;/span&gt;&lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+				</code>
+					</div><!-- well-->
+					<button class="button" onclick="copySigCode()">Copiar</button>
+				</div>
+			</div><!--six-->
+			<div class="span six">
+				<h4>Visualização</h4>
+				<div class="template-card">
+					<table style="font-size: small; color: #222222; font-family: arial, sans-serif; border-bottom: 1px solid #e0e0e0; padding-bottom: 10px; max-width: 395px;" width="420px">
+						<tbody>
+							<tr>
+								<td style="margin: 0px; padding-left: 10px; line-height: 20px;" valign="top" width="70px">
+									<a style="color: #1155cc;" v-bind:href="linkedInLink" target="_blank">
+											<img style="padding-right: 0px;" v-bind:src="empresa.logo" alt="" width="70px" height="60px" align="left" />
+										</a>
+								</td>
+								<td style="margin: 0px; padding-left: 10px; line-height: 20px;" valign="top" width="350px">
+									<strong><span style="font-size: 16px; line-height: 20px;">{{ fullName }}</span></strong>
+									<br /><span style="text-transform: uppercase; font-size: 11px; letter-spacing: 0.2px; color: #999999;">{{ positionTitle }}</span>
+									<br />
+									<a style="color: #1155cc; font-size: 11px; text-decoration: none;" v-bind:href="empresa.site" target="_blank">
+										<span style="color: #ff0000;">{{empresa.site}}</span>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table style="color: #222222; font-family: arial, sans-serif; font-size: small; max-width: 450px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;" width="100%">
+						<tbody>
+							<tr>
+								<td style="margin: 0px; line-height: 16px;" valign="top" width="43%">
+									<span style="font-size: 11px; line-height: 16px;"><span style="color: #999999;">Tel:</span>
+									<a style="color: #1155cc; text-decoration: none;" href="tel:+4402037505550" target="_blank">
+										<span style="color: #000000;">&nbsp;{{empresa.tel}}</span>
+									</a>
+									<br /><span style="color: #999999;">Celular:</span><a style="color: #1155cc;"><span style="color: #000000;">&nbsp;{{ mobilePhone }}</span></a>
+									<br /><span style="color: #999999;">Fax:</span><a style="color: #1155cc;"><span style="color: #000000;">&nbsp;{{fax}}</span></a>
+								
+									</span>
+								</td>
+								<td style="margin: 0px; line-height: 16px;" valign="top" width="50%">
+									<span style="font-size: 11px; line-height: 16px;">
+											<span style="color: #999999;">Ramal:</span>
+											<a style="color: #1155cc; text-decoration: none;" href="tel:+4402037505197" target="_blank">
+													<strong><span style="color: #000000;">&nbsp {{ramal}}</span> </strong>
+											</a>
+									
+									<br />
+									<span style="font-size: 11px; line-height: 16px;">
+										<span style="color: #999999;">Skype:</span>
+										<span style="color: #000000;">&nbsp;{{ skypeAccount }}</span>
+										<br />
+										<span style="color: #999999;">LinkedIn:</span>
+										<a style="color: #1155cc; text-decoration: none;" href="linkedin" target="_blank">
+											<span style="color: #000000;">&nbsp;{{linkedInLink}}</span>
+										</a>
+										
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table style="color: #222222; font-family: arial, sans-serif; font-size: small; max-width: 400px;" width="100%" v-if="empresa.certs!=''">
+						<tbody>
+							<tr>
+								<td style="margin: 0px; padding-left: 6px; max-width:300px;" width="250px" max-width="250px">
+									<a style="color: #1155cc;" href="http://www.ecbsa.com.br/gestao/certificados" target="_blank">
+									<img style="text-decoration: none; width: 250px !important;" src="./assets/isologos.png" alt="Award Winning Solutions" max-width="250px;" border="0" />
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div><!--six-->
+		</div><!--row-->
+
+	</div>
+	<!-- container -->
+</div>
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="span twelve">
+				<p>
+					<span>Apos gerar recorte a assinatura usando a ferramenta de captura do windows ou print screen para criar a imagem que será anexada no outlook.</span> 
+					<a href="https://support.office.com/pt-br/article/Criar-e-adicionar-uma-assinatura-a-mensagens-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2" target="_blank">Tutorial Outlook</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+  <script src='js/vue.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

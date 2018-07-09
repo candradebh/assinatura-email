@@ -1,0 +1,25 @@
+{
+  "name": "hubspot-sig-gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryan-parag/hubspot-sig-gen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryan-parag/hubspot-sig-gen/issues"
+  },
+  "homepage": "https://github.com/ryan-parag/hubspot-sig-gen#readme",
+  "dependencies": {
+    "gulp-babel": "^7.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
+  }
+}
