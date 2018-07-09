@@ -11,8 +11,10 @@ var app = new Vue({
 		skypeAccount: '',
 		profilePhoto: '',
 		empresas : [ 
-			{id:'010',name:'Empresa Construtora Brasil SA', site:'http://www.ecbsa.com.br', logo:'http://www.ecbsa.com.br/img/site/logo-2.png', tel: '(31) 3516-7922', certs:'assets/isologos.png'},
-			{id:'290',name:'Consita', site:'http://www.consita.com.br', logo:'http://www.consita.com.br/wp-content/themes/consita/images/logo.png', tel: '(31) 2101-0422',certs:''}
+			{id:'290',name:'Consita', site:'http://www.consita.com.br', logo:'assets/consita.png', tel: '(31) 2101-0422',certs:''},
+			{id:'010',name:'Empresa Construtora Brasil SA', site:'http://www.ecbsa.com.br', logo:'assets/ecbsa.png', tel: '(31) 3516-7922', certs:'assets/isologos.png'},
+			{id:'010',name:'Empresa Construtora Brasil / Grupo Mota-Engil ', site:'http://www.ecbsa.com.br', logo:'assets/ecbmota.png', tel: '(31) 3516-7922', certs:'assets/ecbmota.png'},
+			{id:'240',name:'Tracevia do Brasil', site:'http://www.tracevia.com.br', logo:'assets/tracevia.png', tel: '(31) 3516-7922',certs:''}
 		]
 			
 	},

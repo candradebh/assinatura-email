@@ -60,30 +60,16 @@
 							</div><!--six-->
 							<div class="span six">
 								<fieldset>
-									<label>Cargo</label>
-									<input type="text" v-model="positionTitle" placeholder="Informe seu Cargo"/>
+									<label>Setor/Cargo</label>
+									<input type="text" v-model="positionTitle" placeholder="Informe seu Cargo e ou setor"/>
 								</fieldset>
 							</div><!--six-->
 						</div><!--row-->
 						<div class="row" v-if="empresa!==''">
-							<div class="span six">
-									<fieldset>
-										<label>LinkedIn URL <small>Copie o link do seu perfil linkedin</small></label>
-										<input type="text" v-model="linkedInLink" placeholder="Informe seu linkedin"/>
-								</fieldset>
-							</div><!--six-->
 							<div class="span six">
 								<fieldset>
 									<label>Celular</label>
 									<input type="tel" v-model="mobilePhone" placeholder="Informe seu celular"/>
-								</fieldset>
-							</div><!--six-->
-						</div><!--row-->
-						<div class="row" v-if="empresa!==''">
-							<div class="span six">
-								<fieldset>
-									<label>Skype</label>
-									<input type="text" v-model="skypeAccount" placeholder="Informe seu Skype" />
 								</fieldset>
 							</div><!--six-->
 							<div class="span six">
@@ -93,6 +79,7 @@
 								</fieldset>
 							</div><!--six-->
 						</div><!--row-->
+						
 					</form>
 				</div>
 			</div><!--six-->
@@ -172,7 +159,7 @@
 										</a>
 								</td>
 								<td style="margin: 0px; padding-left: 10px; line-height: 20px;" valign="top" width="350px">
-									<strong><span style="font-size: 16px; line-height: 20px;">{{ fullName }}</span></strong>
+									<strong><span style="font-size: 16px; line-height: 20px;text-decoration: underline;">{{ fullName }}</span></strong>
 									<br /><span style="text-transform: uppercase; font-size: 11px; letter-spacing: 0.2px; color: #999999;">{{ positionTitle }}</span>
 									<br />
 									<a style="color: #1155cc; font-size: 11px; text-decoration: none;" v-bind:href="empresa.site" target="_blank">
@@ -185,17 +172,23 @@
 					<table style="color: #222222; font-family: arial, sans-serif; font-size: small; max-width: 450px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;" width="100%">
 						<tbody>
 							<tr>
+								<td style="margin: 0px; line-height: 16px;" colspan="2">
+									<span style="color: #000000;font-weight: bold;">{{empresa.name}}</span></td>
+							</tr>
+							<tr>
 								<td style="margin: 0px; line-height: 16px;" valign="top" width="43%">
 									<span style="font-size: 11px; line-height: 16px;"><span style="color: #999999;">Tel:</span>
 									<a style="color: #1155cc; text-decoration: none;" href="tel:+4402037505550" target="_blank">
 										<span style="color: #000000;">&nbsp;{{empresa.tel}}</span>
 									</a>
-									<br /><span style="color: #999999;">Celular:</span><a style="color: #1155cc;"><span style="color: #000000;">&nbsp;{{ mobilePhone }}</span></a>
-									<br /><span style="color: #999999;">Fax:</span><a style="color: #1155cc;"><span style="color: #000000;">&nbsp;{{fax}}</span></a>
-								
+									<br />
+									<span style="color: #999999;" v-if="mobilePhone!==''">Celular:</span>
+										<a style="color: #1155cc;">
+											<span style="color: #000000;">&nbsp;{{ mobilePhone }}</span>
+										</a>
 									</span>
 								</td>
-								<td style="margin: 0px; line-height: 16px;" valign="top" width="50%">
+								<td style="margin: 0px; line-height: 16px;" valign="top" width="50%" v-if="ramal!==''">
 									<span style="font-size: 11px; line-height: 16px;">
 											<span style="color: #999999;">Ramal:</span>
 											<a style="color: #1155cc; text-decoration: none;" href="tel:+4402037505197" target="_blank">
@@ -203,16 +196,7 @@
 											</a>
 									
 									<br />
-									<span style="font-size: 11px; line-height: 16px;">
-										<span style="color: #999999;">Skype:</span>
-										<span style="color: #000000;">&nbsp;{{ skypeAccount }}</span>
-										<br />
-										<span style="color: #999999;">LinkedIn:</span>
-										<a style="color: #1155cc; text-decoration: none;" href="linkedin" target="_blank">
-											<span style="color: #000000;">&nbsp;{{linkedInLink}}</span>
-										</a>
-										
-									</span>
+									
 								</td>
 							</tr>
 						</tbody>
